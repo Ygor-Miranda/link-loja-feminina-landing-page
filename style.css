@@ -1,0 +1,390 @@
+/* =========================================================
+   LUMIÈRE FASHION — Landing Page
+   Paleta extraída da logo/print enviado:
+   - Creme/marfim (fundo)
+   - Dourado (logo, detalhes, botões)
+   - Dourado escuro (hover/contraste)
+   - Marrom-carvão (texto principal)
+   ========================================================= */
+
+:root {
+  --color-cream: #FAF6EF;      /* fundo principal (ivory/creme) */
+  --color-cream-soft: #F3EDE0; /* fundo secundário / bordas suaves */
+  --color-gold: #C6A15C;       /* dourado principal (logo, títulos) */
+  --color-gold-dark: #9C7C3E;  /* dourado escuro (hover, contraste) */
+  --color-gold-light: #E4D3AC; /* dourado claro (bordas, detalhes) */
+  --color-text: #3E362E;       /* marrom-carvão para textos */
+  --color-text-soft: #6E645A;  /* texto secundário */
+  --color-white: #FFFFFF;
+
+  --font-title: 'Playfair Display', serif;
+  --font-body: 'Montserrat', sans-serif;
+}
+
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-cream);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== LAYOUT GERAL (Mobile-first) ===== */
+.page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.5rem;
+  overflow: hidden; /* recorta os galhos decorativos nas bordas, como no material da marca */
+}
+
+/* Conteúdo real sempre acima das decorações */
+.header,
+.main,
+.footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== MOLDURA DECORATIVA ===== */
+.page-frame {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
+  border: 1px solid var(--color-gold-light);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* ===== GALHOS DOURADOS DECORATIVOS ===== */
+.decor {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.decor--top-right {
+  top: -18px;
+  right: -18px;
+}
+
+.decor--bottom-left {
+  bottom: -18px;
+  left: -18px;
+  transform: rotate(180deg);
+}
+
+.branch-stem {
+  fill: none;
+  stroke: var(--color-gold);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+.branch-leaf path {
+  fill: none;
+  stroke: var(--color-gold);
+  stroke-width: 1.3;
+  opacity: 0.55;
+}
+
+.branch-leaf line {
+  stroke: var(--color-gold);
+  stroke-width: 1;
+  opacity: 0.45;
+}
+
+/* ===== HEADER ===== */
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.logo {
+  width: 140px;
+  height: auto;
+  /* Placeholder: caso a imagem não carregue, mantém o espaço reservado */
+  min-height: 100px;
+}
+
+/* ===== MAIN / HERO ===== */
+.main {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.hero-title {
+  font-family: var(--font-title);
+  font-weight: 600;
+  font-size: 1.9rem;
+  color: var(--color-gold-dark);
+  margin-bottom: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.hero-divider-line {
+  width: 42px;
+  height: 1px;
+  background-color: var(--color-gold);
+  opacity: 0.6;
+}
+
+.hero-divider-star {
+  width: 14px;
+  height: 14px;
+  color: var(--color-gold);
+  flex-shrink: 0;
+}
+
+.hero-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-text-soft);
+  font-weight: 300;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+/* ===== CTA LINKS ===== */
+.cta-links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.95rem 1.5rem;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+
+  /* Transição suave: única animação permitida é a de interação (hover/active) */
+  transition: background-color 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease,
+              transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Botão 1 — WhatsApp (preenchido em dourado) */
+.btn--whatsapp {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  border-color: var(--color-gold);
+}
+
+.btn--whatsapp:hover {
+  background-color: var(--color-gold-dark);
+  border-color: var(--color-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(156, 124, 62, 0.28);
+}
+
+.btn--whatsapp:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(156, 124, 62, 0.25);
+}
+
+/* Botão 2 — Instagram (contorno dourado) */
+.btn--instagram {
+  background-color: transparent;
+  color: var(--color-gold-dark);
+  border-color: var(--color-gold);
+}
+
+.btn--instagram:hover {
+  background-color: var(--color-gold);
+  color: var(--color-white);
+  border-color: var(--color-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(198, 161, 92, 0.25);
+}
+
+.btn--instagram:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(198, 161, 92, 0.2);
+}
+
+/* Botão 3 — Site (estilo mais discreto, contorno suave) */
+.btn--site {
+  background-color: var(--color-cream-soft);
+  color: var(--color-text);
+  border-color: var(--color-gold-light);
+}
+
+.btn--site:hover {
+  background-color: var(--color-white);
+  border-color: var(--color-gold);
+  color: var(--color-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(62, 54, 46, 0.1);
+}
+
+.btn--site:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(62, 54, 46, 0.08);
+}
+
+/* Acessibilidade: foco visível para navegação por teclado */
+.btn:focus-visible {
+  outline: 2px solid var(--color-gold-dark);
+  outline-offset: 3px;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  width: 100%;
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-gold-light);
+}
+
+.footer p {
+  font-size: 0.75rem;
+  color: var(--color-text-soft);
+  letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   RESPONSIVIDADE — Telas maiores (Tablet / Desktop)
+   ========================================================= */
+@media (min-width: 600px) {
+  .page {
+    padding: 3.5rem 2rem;
+  }
+
+  .page-frame {
+    top: 18px;
+    right: 18px;
+    bottom: 18px;
+    left: 18px;
+  }
+
+  .decor {
+    width: 190px;
+    height: 190px;
+  }
+
+  .decor--top-right {
+    top: -28px;
+    right: -28px;
+  }
+
+  .decor--bottom-left {
+    bottom: -28px;
+    left: -28px;
+  }
+
+  .logo {
+    width: 170px;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .main {
+    max-width: 460px;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 1.05rem 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page {
+    padding: 4.5rem 2rem;
+  }
+
+  .page-frame {
+    top: 26px;
+    right: 26px;
+    bottom: 26px;
+    left: 26px;
+  }
+
+  .decor {
+    width: 240px;
+    height: 240px;
+  }
+
+  .decor--top-right {
+    top: -34px;
+    right: -34px;
+  }
+
+  .decor--bottom-left {
+    bottom: -34px;
+    left: -34px;
+  }
+
+  .hero {
+    margin-bottom: 3.25rem;
+  }
+
+  .hero-title {
+    font-size: 2.75rem;
+  }
+}
