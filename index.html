@@ -6,70 +6,19 @@
   <title>Lumiere Fashion</title>
   <meta name="description" content="Lumière Fashion - Moda feminina elegante e sofisticada. Fale conosco pelo WhatsApp ou siga no Instagram.">
 
-  <!-- Google Fonts: Playfair Display (títulos/logo) + Montserrat (textos/botões) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+  <!-- Fontes Playfair Display (títulos/logo) + Montserrat (textos/botões) hospedadas localmente em assets/fonts,
+       para não depender do carregamento do Google Fonts (evita ficar sem serifa caso a rede bloqueie o CDN) -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- ===== FUNDO DA MARCA (imagem fixa, não acompanha a rolagem) ===== -->
+  <div class="page-bg" aria-hidden="true"></div>
+
   <!-- ===== MOLDURA DECORATIVA (linha fina dourada ao redor da tela) ===== -->
   <div class="page-frame" aria-hidden="true"></div>
 
-  <!-- ===== SÍMBOLO SVG REUTILIZÁVEL: GALHO COM FOLHAS DOURADAS ===== -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-    <defs>
-      <symbol id="branch" viewBox="0 0 220 220">
-        <path class="branch-stem" d="M15,205 C50,160 70,130 95,100 C120,70 150,45 205,15" />
-        <g class="branch-leaf" transform="translate(38,178) rotate(-35)">
-          <path d="M0,0 C7,-9 7,-22 0,-32 C-7,-22 -7,-9 0,0 Z" />
-          <line x1="0" y1="-3" x2="0" y2="-29" />
-        </g>
-        <g class="branch-leaf" transform="translate(56,152) rotate(155) scale(0.85)">
-          <path d="M0,0 C7,-9 7,-22 0,-32 C-7,-22 -7,-9 0,0 Z" />
-          <line x1="0" y1="-3" x2="0" y2="-29" />
-        </g>
-        <g class="branch-leaf" transform="translate(78,126) rotate(-20)">
-          <path d="M0,0 C7,-9 7,-22 0,-32 C-7,-22 -7,-9 0,0 Z" />
-          <line x1="0" y1="-3" x2="0" y2="-29" />
-        </g>
-        <g class="branch-leaf" transform="translate(100,100) rotate(145) scale(0.9)">
-          <path d="M0,0 C7,-9 7,-22 0,-32 C-7,-22 -7,-9 0,0 Z" />
-          <line x1="0" y1="-3" x2="0" y2="-29" />
-        </g>
-        <g class="branch-leaf" transform="translate(124,78) rotate(-12) scale(0.8)">
-          <path d="M0,0 C7,-9 7,-22 0,-32 C-7,-22 -7,-9 0,0 Z" />
-          <line x1="0" y1="-3" x2="0" y2="-29" />
-        </g>
-        <g class="branch-leaf" transform="translate(148,56) rotate(130) scale(0.75)">
-          <path d="M0,0 C7,-9 7,-22 0,-32 C-7,-22 -7,-9 0,0 Z" />
-          <line x1="0" y1="-3" x2="0" y2="-29" />
-        </g>
-        <g class="branch-leaf" transform="translate(172,36) rotate(-8) scale(0.65)">
-          <path d="M0,0 C7,-9 7,-22 0,-32 C-7,-22 -7,-9 0,0 Z" />
-          <line x1="0" y1="-3" x2="0" y2="-29" />
-        </g>
-        <g class="branch-leaf" transform="translate(196,17) rotate(115) scale(0.55)">
-          <path d="M0,0 C7,-9 7,-22 0,-32 C-7,-22 -7,-9 0,0 Z" />
-          <line x1="0" y1="-3" x2="0" y2="-29" />
-        </g>
-      </symbol>
-    </defs>
-  </svg>
-
   <div class="page">
-
-    <!-- Galho decorativo — canto superior direito -->
-    <svg class="decor decor--top-right" viewBox="0 0 220 220" aria-hidden="true">
-      <use href="#branch" />
-    </svg>
-
-    <!-- Galho decorativo — canto inferior esquerdo (espelhado via CSS) -->
-    <svg class="decor decor--bottom-left" viewBox="0 0 220 220" aria-hidden="true">
-      <use href="#branch" />
-    </svg>
 
     <!-- ===== HEADER ===== -->
     <header class="header">
@@ -82,7 +31,7 @@
 
       <!-- ===== HERO ===== -->
       <section class="hero">
-        <h1 class="hero-title">Elegância que veste sua essência</h1>
+        <h1 class="hero-title">ELEGÊNCIA QUE VESTE SUA ESSÊNCIA</h1>
 
         <p class="hero-subtitle">
           Peças exclusivas, atemporais e feitas para quem não abre mão de estilo e sofisticação.

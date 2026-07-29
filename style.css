@@ -7,8 +7,25 @@
    - Marrom-carvão (texto principal)
    ========================================================= */
 
+/* ===== FONTES (hospedadas localmente, sem depender do Google Fonts CDN) ===== */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('assets/fonts/playfair-display-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 300 600;
+  font-display: swap;
+  src: url('assets/fonts/montserrat-latin.woff2') format('woff2');
+}
+
 :root {
-  --color-cream: #FDF7EA;      /* fundo principal (ivory/creme, extraído da nova logo) */
+  --color-cream: #FBF7F3;      /* fundo principal (creme extraído da arte de fundo da marca) */
   --color-cream-soft: #F6EEDB; /* fundo secundário / bordas suaves */
   --color-gold: #C6A15C;       /* dourado principal (logo, títulos) */
   --color-gold-dark: #9C7C3E;  /* dourado escuro (hover, contraste) */
@@ -48,7 +65,6 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 2rem 1.5rem;
-  overflow: hidden; /* recorta os galhos decorativos nas bordas, como no material da marca */
 }
 
 /* Conteúdo real sempre acima das decorações */
@@ -57,6 +73,30 @@ body {
 .footer {
   position: relative;
   z-index: 1;
+}
+
+/* ===== FUNDO DA MARCA =====
+   Galhos extraídos da arte original e ancorados nos cantos, em vez da foto inteira:
+   a foto é 4:5, então em telas muito altas ou muito largas o "cover" cortava justamente
+   os cantos onde estão os galhos.
+   position: fixed em vez de background-attachment: fixed, que falha no Safari iOS
+   (navegador embutido do Instagram/WhatsApp, principal via de acesso das clientes) */
+.page-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--color-cream);
+  background-image: url('assets/branch-top-right.png'),
+                    url('assets/branch-bottom-left.png'),
+                    url('assets/silk-top-left.png'),
+                    url('assets/silk-bottom-right.png');
+  background-position: top right, bottom left, top left, bottom right;
+  background-repeat: no-repeat;
+  background-size: 150px auto, 128px auto, 190px auto, 190px auto;
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* ===== MOLDURA DECORATIVA ===== */
@@ -69,47 +109,6 @@ body {
   border: 1px solid var(--color-gold-light);
   pointer-events: none;
   z-index: 2;
-}
-
-/* ===== GALHOS DOURADOS DECORATIVOS ===== */
-.decor {
-  position: absolute;
-  width: 130px;
-  height: 130px;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.decor--top-right {
-  top: -18px;
-  right: -18px;
-}
-
-.decor--bottom-left {
-  bottom: -18px;
-  left: -18px;
-  transform: rotate(180deg);
-}
-
-.branch-stem {
-  fill: none;
-  stroke: var(--color-gold);
-  stroke-width: 1.5;
-  stroke-linecap: round;
-  opacity: 0.55;
-}
-
-.branch-leaf path {
-  fill: none;
-  stroke: var(--color-gold);
-  stroke-width: 1.3;
-  opacity: 0.55;
-}
-
-.branch-leaf line {
-  stroke: var(--color-gold);
-  stroke-width: 1;
-  opacity: 0.45;
 }
 
 /* ===== HEADER ===== */
@@ -145,7 +144,7 @@ body {
 
 .hero-title {
   font-family: var(--font-title);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.9rem;
   color: var(--color-gold-dark);
   margin-bottom: 0.9rem;
@@ -158,6 +157,7 @@ body {
   font-weight: 300;
   max-width: 380px;
   margin: 0 auto;
+  font-weight: bold;
 }
 
 /* ===== CTA LINKS ===== */
@@ -274,9 +274,10 @@ body {
 }
 
 .footer p {
+  font-family: var(--font-title);
   font-size: 0.75rem;
   color: var(--color-text-soft);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
 }
 
 /* =========================================================
@@ -294,19 +295,8 @@ body {
     left: 18px;
   }
 
-  .decor {
-    width: 190px;
-    height: 190px;
-  }
-
-  .decor--top-right {
-    top: -28px;
-    right: -28px;
-  }
-
-  .decor--bottom-left {
-    bottom: -28px;
-    left: -28px;
+  .page-bg {
+    background-size: 215px auto, 185px auto, 280px auto, 280px auto;
   }
 
   .logo {
@@ -343,19 +333,8 @@ body {
     left: 26px;
   }
 
-  .decor {
-    width: 240px;
-    height: 240px;
-  }
-
-  .decor--top-right {
-    top: -34px;
-    right: -34px;
-  }
-
-  .decor--bottom-left {
-    bottom: -34px;
-    left: -34px;
+  .page-bg {
+    background-size: 300px auto, 260px auto, 400px auto, 400px auto;
   }
 
   .hero {
